@@ -12,6 +12,6 @@ On top of [general training template instructions](https://github.com/csc-traini
 
 - Intending bulletpoints should be done with two spaces.
 
-- For representing commands and keypresses inline with text, function definition(`…`) should be used.
+- For representing commands and keypresses inline with text, single backticks (\`…\`) should be used.
 
-- Command examples should use code block syntax for bash (```bash …```)
+- Command examples should use code block syntax for bash (\```bash …\```)
