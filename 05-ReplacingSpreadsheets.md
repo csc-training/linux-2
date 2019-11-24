@@ -129,35 +129,3 @@ sort [-d -f -g ] file1 [file2 ...]
 	$ uniq -c -f 1 -w 10 sheep_lines.txt 
     ```
 
-# Changing time-stamps
-
-- Changing time-stamps for file, but even creating empty file
-```bash
-touch [-a -m --reference=reffile] file1 [file2 ...]
-```
-      - `-a` changes access time (usually not shown)
-      - `-m`  changes modification time
-      - `--reference=reffile` uses *reffile*’s timestamps
-    - lets try the following:
-    ```bash
-    $ ls  -l *.txt	      → -rwxrwxr-x 1 cscuser cscuser 76 Nov 16 23:02 sheep.txt
-    ```
-	```bash
-    $ touch -m sheep.txt
-	```
-	```bash
-	$ ls -l *.txt         → -rwxrwxr-x 1 cscuser cscuser 76 Nov 18 10:07 sheep.txt
-	$ date                → Mon 18 Nov 10:07:38 EET 2019
-	```
-	
-	
-# Changing time-stamps (cntd.)	
-	
-
-- Changing time-stamps for file, but even creating empty file
-```bash
-touch [-a -m --reference=reffile] file1 [file2 ...]
-```
-      - `-a` changes access time (usually not shown)
-      - `-m`  changes modification time
-      - `--reference=reffile` uses *reffile*’s timestamps
