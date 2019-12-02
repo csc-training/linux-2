@@ -5,18 +5,7 @@ date:	  2019-12
 lang:	  en
 ---
 
-# Forward, forward, there is no turning back!
 
-What we have covered so far and what is missing:
-
-- The shell does the following:
-    1. Reads its input from a file, from a string supplied as an argument to the -c invocation option, or from the user's terminal &#9989;
-    2. Breaks the input into words and operators, called tokens &#9989;
-    3. Parses the tokens into simple and compound commands &#9989;
-    4. Performs the various shell expansions, breaking the expanded tokens into lists of filenames and commands and arguments &#9989;
-    5. Performs any necessary redirections &#10060;
-    6. Executes the command &#10060;
-    7. Optionally waits for the command to complete and collects its exit status &#9989;
 
 # File descriptors
 
@@ -214,16 +203,5 @@ $ cat <MYFIFO
 $ rm mYFIFO
 ```
 
-# We are soon reaching the end of the road
 
-What we have covered so far and what is missing:
-
-- The shell does the following:
-    1. Reads its input from a file, from a string supplied as an argument to the -c invocation option, or from the user's terminal &#9989;
-    2. Breaks the input into words and operators, called tokens &#9989;
-    3. Parses the tokens into simple and compound commands &#9989;
-    4. Performs the various shell expansions, breaking the expanded tokens into lists of filenames and commands and arguments &#9989;
-    5. Performs any necessary redirections &#10005; &#10144; &#9989;
-    6. Executes the command &#10060;
-    7. Optionally waits for the command to complete and collects its exit status &#9989;
   
