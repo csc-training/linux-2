@@ -5,7 +5,8 @@ date:	2019-12
 lang:	en
 ---
 
-# Program, December 3rd
+
+# Program, December 16th
 
 _09:00 – 09:30 Morning coffee & registration_<br/>
 09:30 – 09:45 Introduction to the course<br/>
@@ -18,7 +19,7 @@ _14:30 – 15:00 Coffee_<br/>
 15:00 – 16:30 Hands-on exercises<br/>
 
 
-# Program, December 4th
+# Program, December 17th
 
 09:00 – 10:00 Pattern matching and regular expressions<br/>
 _10:00 – 10:30 Coffee_<br/>

@@ -6,16 +6,24 @@ lang:	  en
 ---
 
 
-
 # What is a shell?
 
-- A Unix _shell_ is both a command interpreter and a programming language at the same time.
-- As a command interpreter, the shell provides a user an interactive interface to the computer.
-  - Features include command line editing and history, aliases, job control, etc.
-- The programming language features allow commands to be run autonomously. This is called scripting.
-- There are a multitude of different shells available, most common ones being variants of Bourne shell, Korn shell, and C shell.
+- At its base, a shell is simply a macro processor that executes commands.
+- A Unix shell is both a command interpreter and a programming language.
+  - As a command interpreter, the shell provides the user interface to the rich set of utilities.
+  - The programming language features allow these utilities to be combined.
+- Shells may be used interactively or non-interactively. In interactive mode, they accept input typed from the keyboard. When executing non-interactively, shells execute commands read from a file.
+- There are a multitude of different shells available.
   - Bourne Again shell — bash — is probably dominant.
 
+
+# Shell operation — a seven-stroke cycle engine
+
+- When the shell reads input, it proceeds through a sequence of operations. Roughly speaking, the shell:
+  - reads input and divides it into words and operators; then
+  - parses these tokens into commands and other constructs, removes the special meaning of certain words or characters, expands others, redirects input and output as needed; and finally
+  - executes the specified command, waits for the command’s exit status, and makes that exit status available for further inspection or processing.
+- A command is just a sequence of words; the first word generally specifies a command to be executed, with the rest of the words being that command’s arguments.
 
 
 # Readline — bash bare essentials
@@ -30,20 +38,19 @@ lang:	  en
 - To clear the screen while retaining the current line, type `C-l`.
 
 
-
 # Prompting — the shell expects something from you
 
 - When executing interactively, bash displays the primary prompt `PS1` when it is ready to read a command, and the secondary  prompt `PS2` when  it needs more input to complete a command.
-- Bash allows these prompt strings to be customized by inserting a number of backslash-escaped special characters:
+  - Bash allows these prompt strings to be customized by inserting a number of backslash-escaped special characters:
 
 ```bash
 $ PS1="(\!) \h:\W\$ "
 ```
-\\! = history number of this command<br/>
-\\h = hostname up to the first `.`<br/>
-\\W = the basename of current working directory<br/>
-\\$ = if effective UID is 0, a `#`, otherwise a `$`
 
+  \\! = history number of this command<br/>
+  \\h = hostname up to the first `.`<br/>
+  \\W = the basename of current working directory<br/>
+  \\$ = if effective UID is 0, a `#`, otherwise a `$`
 
 
 # Completing — avoid typing (and errors)
@@ -53,10 +60,9 @@ $ PS1="(\!) \h:\W\$ "
   - a variable (if the text begins  with `$`),
   - username (if the text begins with `~`),
   - hostname (if the text begins with `@`), or
-  - command (including aliases and functions) from `$PATH`.
+  - a command (including aliases and functions) from `$PATH`.
   - If none of these produces a match, filename completion is attempted.
 - To just see possible completions hit `M-?` and to insert all possible completions hit `M-*`.
-
 
 
 # History — more ways to avoid typing
@@ -66,7 +72,6 @@ $ PS1="(\!) \h:\W\$ "
 - To access the history you use `UP` and `DOWN` keys.
 - You can also search the history by pressing `C-r`.
 - To view the complete history, use `history` command.
-
 
 
 # History expansion — avoid typing with a twist
@@ -85,6 +90,20 @@ $ ^echi^echo^
 ```
 
 
+# Quoting — Take it literally
+
+- Quoting is used to remove the special meaning of certain characters or words to the shell.
+- There are three quoting mechanisms: the escape character `\`, single quotes `''`, and double quotes `""`.
+  - The escape character preserves the literal value of the next character.
+  - Single quotes preserve the literal value of each character within the quotes.
+  - Double quotes preserve the literal value of each character within the quotes, with the exception of `$`, `` ` ``, and `\`.
+  
+```bash
+$ echo \$HOME
+$ echo '$HOME'
+$ echo "I'm \$HOME"
+```
+
 
 # Simple command expansion — I press enter and…?
 
@@ -100,23 +119,6 @@ $ LANG=fi_FI.utf8 ls -ld ~/*
 ```
 
 
-
-# Quoting — Take it literally
-
-- Quoting is used to remove the special meaning of certain characters or words to the shell.
-- There are three quoting mechanisms: the escape character `\`, single quotes `'`, and double quotes `"`.
-  - The escape character preserves the literal value of the next character.
-  - Single quotes preserve the literal value of each character within the quotes.
-  - Double quotes preserve the literal value of each character within the quotes, with the exception of `$`, `` ` ``, and `\`.
-  
-  ```bash
-  $ echo \$HOME
-  $ echo '$HOME'
-  $ echo "I'm \$HOME"
-  ```
-
-
-
 # Expansion — Making a short story long
 
 - Expansion is a process of exchanging a word with one (or more) another word, with certain rules.
@@ -128,7 +130,6 @@ $ LANG=fi_FI.utf8 ls -ld ~/*
   5. Command substitution
   6. Word splitting
   7. Pathname expansion
-
 
 
 # Brace expansion — Make strings happen
@@ -143,7 +144,6 @@ $ mkdir -p exp/{jan,feb,mar,apr}/run{1..3}-data
 ```bash
 $ touch exp/{{jan,mar},feb/{1,2}}/skip
 ```
-
 
 
 # Tilde expansion — A way to home
@@ -165,8 +165,7 @@ $ cd ~-
 ```
 
 
-
-# Pathname expansion — the wildcards
+# Filename expansion — the wildcards
 
 - The shell scans the command line for the characters `*`, `?`, and `[`. If one of these is found, the word is regarded as a _pattern_, and replaced with an alphabetically sorted list of file names matching the pattern.
   - `*` matches any string, including an empty string.
@@ -178,7 +177,6 @@ $ ls -d ?e*
 $ ls -d *[cw]*
 $ echo {/usr,}/bin/t[!r]*
 ```
-
 
 
 # Shell builtin commands — some of them
@@ -213,3 +211,24 @@ umask [mode]
   : The user file-creating mask is set to _mode_.
 
 </div>
+
+
+# Signals — there's a trap
+
+- Signals are asynchronous notifications that are sent to processes when certain events occur.
+- `trap` allows you to catch signals and execute code when they occur.
+  - Option `-l` lists all available signals, and option `-p` lists all signals currently trapped.
+
+```bash
+$ trap "echo kukkuu" SIGUSR1
+```
+
+```bash
+# Run something important, no Ctrl-C allowed.
+trap "" SIGINT
+important_command
+
+# Less important stuff from here on out, Ctrl-C allowed.
+trap - SIGINT
+not_so_important_command
+```
