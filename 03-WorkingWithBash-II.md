@@ -224,28 +224,40 @@ $ [[ -e Desktop && -d Desktop ]] && echo "Desktop is a directory" # But this doe
 ```bash
 $ for sqr in 1 2 3 4 5 6; do echo $(( 2 ** $sqr )); done
 $ for sqr in {1..6}; do echo $(( 2 ** $sqr)); done
-$ for sqr in {1..6..2}; do echo $(( 2 ** $sqr )); done
 $ for (( sqr = 1; sqr <= 6; sqr++ )); do echo $(( 2 ** $sqr )); done
+```
 
+```bash
+$ for sqr in {1..6..2}; do echo $(( 2 ** $sqr )); done
+```
+
+```bash
 $ for i in *; do echo "$i"; done # Equivalent to 'ls -1'
+```
 
+```bash
 $ for ns in $(grep ^nameserver /etc/resolv.conf); do
 >   if [ $ns = nameserver ]; then continue; fi
 >   ping -c1 $ns
 > done
 $ for ns in "$(grep ^nameserver /etc/resolv.conf)"; do ping -c1 ${ns##nameserver }; done
-
-$ while read -r line do;
->   echo $line
-> done < /etc/resolv.conf
 ```
 
 
 # Looping constructs
 
 ```bash
-while
-until
+while read -r line; do
+  echo "::: $line"
+  [[ "$line" == "end" ]] && break
+done
+```
+
+```bash
+until [ "$line" == "end" ]; do
+  read -r line
+  echo "::: $line"
+done
 ```
 
 
