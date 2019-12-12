@@ -15,7 +15,8 @@ lang:	en
 - Click on it
 - IMPORTANT: check for new MAC-address
 
-# Lets open the machine and recall the most important commands
+
+# Let's open the machine and recall the most important commands
 
 - Listing of files/directories?
 - Changing a directory?
@@ -26,47 +27,65 @@ lang:	en
 - Renaming a file/directory?
 - Moving a file/directory?
 
-# Lets open the machine and recall the most important commands
+
+# Let's open the machine and recall the most important commands
 
 - Listing of files/directories? 
+
 ```bash
 $ ls -l
 ```
+
 - Changing a directory?
+
 ```bash
 $ cd /etc
 ```
+
 - Absolute/relative path?
+
 ```bash
 $ cd ../usr
 ```
+
 ```bash
 cd /usr
 ```
 
-# Lets open the machine and recall the most important commands
+
+# Let's open the machine and recall the most important commands
+
 - Where am I in the filesystem? 
+
 ```bash 
 $ pwd
 ```
+
 - Creating an empty new directory? 
+
 ```bash
 $ mkdir -p mydir\mysubdir
 ```
+
 - Removing it? 
+
 ```bash
 $ rmdir mydir\mysubdir
 ```
 
-# Lets open the machine and recall the most important commands
+
+# Let's open the machine and recall the most important commands
 
 - Renaming a file/directory? 
+
 ```bash
 $ mv mydir mynewdir
 ```
+
 - Moving a file/directory? 
+
 ```bash
 $ touch myfile
 $ mv myfile mynewdir
 $ ls -l mynewdir/*
-``` 
+```
