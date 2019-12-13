@@ -9,7 +9,7 @@ This repository holds two main branches with an infinite lifetime:
 - `master`
 - `develop`
 
-Consider `origin/master` to be the main branch where the source code of `HEAD` always reflects a presentation ready state of course materials. The `origin/develop` is the main branch where the code of HEAD always reflects a state with the the latest delivered development changes for the next release of the course.
+Consider `origin/master` to be the main branch where the source code of `HEAD` always reflects course presentations and materials in ready to be used. The `origin/develop` is the main branch where the code of `HEAD` always reflects a state with the the latest delivered development changes for the next release of the course and not ready to be used as such.
 
 When the code in the develop branch reaches a stable point and is ready to be released as new a version of the course, all of the changes should be merged back into master and then tagged with a release number of form year-mon (e.g. `2019-dec`).
 
