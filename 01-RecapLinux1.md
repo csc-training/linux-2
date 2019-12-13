@@ -30,7 +30,7 @@ lang:	en
 
 # Let's open the machine and recall the most important commands
 
-- Listing of files/directories? 
+- Listing of files/directories?
 
 ```bash
 $ ls -l
@@ -55,34 +55,34 @@ cd /usr
 
 # Let's open the machine and recall the most important commands
 
-- Where am I in the filesystem? 
+- Where am I in the filesystem?
 
 ```bash 
 $ pwd
 ```
 
-- Creating an empty new directory? 
+- Creating an empty new directory?
 
 ```bash
-$ mkdir -p mydir\mysubdir
+$ mkdir -p mydir/mysubdir
 ```
 
-- Removing it? 
+- Removing it?
 
 ```bash
-$ rmdir mydir\mysubdir
+$ rmdir mydir/mysubdir
 ```
 
 
 # Let's open the machine and recall the most important commands
 
-- Renaming a file/directory? 
+- Renaming a file/directory?
 
 ```bash
 $ mv mydir mynewdir
 ```
 
-- Moving a file/directory? 
+- Moving a file/directory?
 
 ```bash
 $ touch myfile
