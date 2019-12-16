@@ -13,9 +13,9 @@ _09:00 – 09:30 Morning coffee & registration_<br/>
 09:45 – 10:15 Recapping Introduction to Linux course<br/>
 10:15 – 11:30 Working with the Bash shell, pt. I (shell internals)<br/>
 _11:30 – 12:30 Lunch_<br/>
-12:30 – 13:30 Working with the Bash shell, pt. II (programming constructs)<br/>
-13:30 – 14:30 Pipes, named pipes and redirecting<br/>
-_14:30 – 15:00 Coffee_<br/>
+12:30 – 14:00 Working with the Bash shell, pt. II (programming constructs)<br/>
+_14:00 – 114:30 Coffee_<br/>
+14:30 – 14:30 Pipes, named pipes and redirecting<br/>
 15:00 – 16:30 Hands-on exercises<br/>
 
 

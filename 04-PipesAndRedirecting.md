@@ -156,7 +156,6 @@ end
 - The _word_ undergoes brace expansion, tilde expansion, parameter and variable expansion, command substitution, arithmetic expansion, and quote removal. The result is supplied as a single string to the command on its standard input.
 
 ```bash
-$ ls <<< $PWD
 $ bc <<< 2^10
 ```
 
