@@ -21,7 +21,7 @@ lang:	en
 - Listing of files/directories?
 - Changing a directory?
 - Absolute/relative path?
-- Where am I in the filesyste?
+- Where am I in the filesystem?
 - Creating an empty new directory?
 - Removing it?
 - Renaming a file/directory?
@@ -49,7 +49,7 @@ $ cd ../usr
 ```
 
 ```bash
-cd /usr
+$ cd /usr
 ```
 
 
