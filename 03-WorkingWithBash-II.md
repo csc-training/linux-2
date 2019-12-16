@@ -11,7 +11,7 @@ lang:	en
 - A word beginning with `#` causes that word and all remaining characters on that line to be ignored.
 
 ```bash
-$ echo "Have a nice day!" # no, it's not
+$ echo "Have a nice day!"   # Yes, indeed
 $ #rm -rf Documents
 ```
 
@@ -19,13 +19,14 @@ $ #rm -rf Documents
 
 ```bash
 #!/bin/bash
-echo "Have a nice day!"
-# no, it's not
+echo 'Have a nice day!'
+# Yes, indeed
 ```
 
 ```python
 #!/usr/bin/python
-print "Have a nice day!"
+from datetime import datetime
+print "Today is", datetime.now()
 ```
 
 
@@ -48,25 +49,25 @@ name=[value]
   - The braces are required when _parameter_ is a positional parameter with more than one digit, or when _parameter_ is followed by a character that is not to be interpreted as part of its name.
 
 ```bash
-$ echo $HOME # ——> echo /home/cscuser
-$ echo ${HOME}s # ——> echo /home/cscusers
+$ echo $HOME   # ——> echo /home/cscuser
+$ echo ${HOME}s   # ——> echo /home/cscusers
 ```
 
 
 # Parameter expansion, substring expansion
 
 ```bash
-$ echo ${string:-bummer} # ––> echo bummer
-$ echo ${string:=0123456789abcdefgh} # ––> string=0123456789abcdefgh; echo 0123456789abcdefgh
-$ echo ${string:7} # ––> echo 7890abcdefgh
-$ echo ${string: -7} # ––> echo bcdefgh
-$ echo ${string:7:2} # ––> echo bc
-$ echo ${!HO*} # ––> echo HOME HOSTNAME HOSTTYPE
-$ echo ${#HOME} # ––> echo 13
-$ echo ${HOME#/home} # ––> echo /cscuser
-$ echo ${HOME%user} # ––> echo /home/csc
-$ echo ${HOME^^} # ––> echo /HOME/CSCUSER
-$ echo ${HOME^^e} # ––> echo /homE/cscusEr
+$ echo ${string:-bummer}   # ––> echo bummer
+$ echo ${string:=0123456789abcdefgh}   # ––> string=0123456789abcdefgh; echo 0123456789abcdefgh
+$ echo ${string:7}   # ––> echo 7890abcdefgh
+$ echo ${string: -7}   # ––> echo bcdefgh (note the space before -)
+$ echo ${string:7:2}   # ––> echo bc
+$ echo ${!HO*}   # ––> echo HOME HOSTNAME HOSTTYPE
+$ echo ${#HOME}   # ––> echo 13
+$ echo ${HOME#/home}   # ––> echo /cscuser
+$ echo ${HOME%user}   # ––> echo /home/csc
+$ echo ${HOME^^}   # ––> echo /HOME/CSCUSER
+$ echo ${HOME^^e}   # ––> echo /homE/cscusEr
 ```
 
 ```bash
@@ -84,7 +85,7 @@ $ echo $PATH; echo ${PATH//\/usr/}
 - Positional parameter _n_ may be referenced as `${n}`, or as `$n` when _n_ consists of a single digit.
 
 ```bash
-$ mkdir -p one two/three # ––> command="mkdir", $1="-p", $2="one", $3="two/three"
+$ mkdir -p one two/three   # ––> command="mkdir", $1="-p", $2="one", $3="two/three"
 ```
 
 
@@ -180,7 +181,7 @@ $ mkdir foo || echo "Fail"
 
 ```bash
 $ if [ "$LOGNAME" = "cscuser" ]; then
->    echo "Love you!";
+>    echo 'Good day!';
 > fi
 ```
 
@@ -188,13 +189,13 @@ $ if [ "$LOGNAME" = "cscuser" ]; then
 # Conditional expressions
 
 ```bash
-$ if [ "$LOGNAME" = "cscuser" ]; then echo "Love you!"; fi
-$ if test "$LOGNAME" = "cscuser"; then echo "Love you!"; fi
-$ test "$LOGNAME" = "cscuser" && echo "Love you!"
-$ [ "$LOGNAME" = "cscuser" ] && echo "Love you!"
+$ if [ "$LOGNAME" = "cscuser" ]; then echo 'Good day!'; fi
+$ if test "$LOGNAME" = "cscuser"; then echo 'Good day!'; fi
+$ test "$LOGNAME" = "cscuser" && echo 'Good day!'
+$ [ "$LOGNAME" = "cscuser" ] && echo 'Good day!'
 
-$ if [ "$LOGNAME" = "cscuser" ]; then echo "Love you!"; else echo "How do you do!"; fi
-$ [ "$LOGNAME" = "cscuser" ] && echo "Love you!" || echo "How do you do!"
+$ if [ "$LOGNAME" = "cscuser" ]; then echo 'Good day!'; else echo 'How do you do!'; fi
+$ [ "$LOGNAME" = "cscuser" ] && echo 'Good day!' || echo 'How do you do!'
 
 $ [ -e "Desktop" ] && echo "File Desktop exists."
 $ [ "Desktop" -nt "exp" ] && echo "Desktop is newer" || echo "exp is newer"
@@ -203,8 +204,8 @@ $ [ $(id -u) -ne $UID ] && echo "User ID's do not match."
 $ [ $(( $(id -u) + 1 )) -ne $UID ] && echo "User ID's do not match."
 
 $ if [ -e Desktop -a -d Desktop ]; then echo "Desktop is a directory"; fi
-$ [ -e Desktop && -d Desktop ] && echo "Desktop is a directory" # This does not work
-$ [[ -e Desktop && -d Desktop ]] && echo "Desktop is a directory" # But this does work
+$ [[ -e Desktop && -d Desktop ]] && echo "Desktop is a directory"   # This is similar with [[]]
+$ [ -e Desktop && -d Desktop ] && echo "Desktop is a directory"   # This does not work
 ```
 
 
@@ -232,7 +233,7 @@ $ for sqr in {1..6..2}; do echo $(( 2 ** $sqr )); done
 ```
 
 ```bash
-$ for i in *; do echo "$i"; done # Equivalent to 'ls -1'
+$ for i in *; do echo "$i"; done   # Equivalent to 'ls -1'
 ```
 
 ```bash
@@ -248,15 +249,15 @@ $ for ns in "$(grep ^nameserver /etc/resolv.conf)"; do ping -c1 ${ns##nameserver
 
 ```bash
 while read -r line; do
-  echo "::: $line"
-  [[ "$line" == "end" ]] && break
+  echo "You typed: $line"
+  [ "$line" = "end" ] && break
 done
 ```
 
 ```bash
-until [ "$line" == "end" ]; do
+until [ "$line" = "end" ]; do
   read -r line
-  echo "::: $line"
+  echo "You typed: $line"
 done
 ```
 
