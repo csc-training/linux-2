@@ -34,11 +34,10 @@ $ paste -d ' ' count.txt sheep.txt > counting_sheep_space.txt # creates merged f
 ```bash
 cut [-d del -f no -s] file1 file2 …
 ```
-
 - Extracts fields/columns from each line of files.
-  - `-d del` use different delimiter *del* (to identify fields) than tabulator (default)
-  - `-f no` select fields *no* 
-  - `-s` skip lines not containing delimiters (e.g., header lines)
+    - `-d del` use different delimiter *del* (to identify fields) than tabulator (default)
+    - `-f no` select fields *no* 
+    - `-s` skip lines not containing delimiters (e.g., header lines)
 - Let's try the following:
 
 ```bash
@@ -54,13 +53,12 @@ $ cut -f 1 -d ' ' counting_sheep_space.txt
 ```bash
 wc [-l -w -m -c] file1 [file2 …]
 ```
-
 - Counts lines, words as well as characters or bytes in a file (`wc` stands for **w**ord **c**ount):
-  - `-l` count lines
-  - `-w` count words
-  - `-m` count characters
-  - `-c` count bytes
-  - without arguments displays lines, words, and byte-counts (as `-l -w -c`)
+    - `-l` count lines
+    - `-w` count words
+    - `-m` count characters
+    - `-c` count bytes
+    - without arguments displays lines, words, and byte-counts (as `-l -w -c`)
     - a word is a non-zero-length sequence of characters delimited by white space
 
 ```bash
@@ -73,12 +71,11 @@ $ wc -l sheep_space.txt
 ```bash
 cat [-n -E -v -T] file1 file2 …
 ```
-
 - con**cat**enates files and prints to stdout.
-  - `-n` numbering output lines (e.g., source-code listing)
-  - `-E` indicate ends with a $
-  - `-v` show non-printing
-  - `-T` indicate tabs
+    - `-n` numbering output lines (e.g., source-code listing)
+    - `-E` indicate ends with a $
+    - `-v` show non-printing
+    - `-T` indicate tabs
 - numbers the lines in `sheep_space.txt` and adds the column:
 
 ```bash

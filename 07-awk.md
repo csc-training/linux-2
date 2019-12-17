@@ -114,7 +114,7 @@ Who can produce a similar result with `grep`?
 # Field separator
 
 - Field separator (`FS`), the same as -F option, can be used to indicate character(s) used to separate consecutive fields.
-- Use `-F` followed by separator character(s) from command line, e.g.:
+    - Use `-F` followed by separator character(s) from command line, e.g.:
 
 ```bash
 $ awk -F: -f nologin.awk /etc/passwd
@@ -138,48 +138,37 @@ BEGIN { FS="[:,]" }
 # Field separator (cntd.)
 
 - For multiple choices of sepration characters, use regexp.
-  - Your `FS` is either colon (`:`) or comma (`,`), try for instance (`NF` is number of columns – see next slide):
-
-  ```bash
+    - Your `FS` is either colon (`:`) or comma (`,`), try for instance (`NF` is number of columns – see next slide):
+```bash
   $ echo "0 1:2,3 4" | awk -F"[:,]" '{print "entries:" NF " last column: " $NF}'
-  ```
-
-  - spot the difference with not using regexp:
-
-  ```bash
+```
+    - spot the difference with not using regexp:
+```bash
   $ echo "0 1:2,3 4" | awk -F":," '{print "entries:" NF " last column:" $NF}'
-  ```
-
-  - or also including a blank:
-
-  ```bash
+```
+    - or also including a blank:
+```bash
   $ echo "0 1:2,3 4" | awk -F"[:, ]" '{print "entries:" NF " last column:" $NF}'
-  ```
+```
 
 
 # Counters of columns, rows and records	
 
 - awk fields are accessed through variables `$1`, `$2`, …, `$(NF-1)`, `$(NF)`.
-  - `NF` (Number of Fields) is the number of fields on each line (# columns in row).
-
+    - `NF` (Number of Fields) is the number of fields on each line (# columns in row).
 ```bash
 $ echo "0 1:2,3 4" | awk -F"[:, ]" '{print "entries:" NF " first:" $1 " last:" $NF}'
 ```
-
-- `$0` refers to the whole input row.
-
+    - `$0` refers to the whole input row.
 ```bash
 awk -F":" '{printf "user: %s\n    whole line: %s\n", $1, $0}' /etc/passwd
 ```
-
-- `printf` enables formatted printout - we will discuss in more details later.
-- `NR` (Number of Records) is the number of input records (lines):
-
+    - `printf` enables formatted printout - we will discuss in more details later.
+    - `NR` (Number of Records) is the number of input records (lines):
 ```bash
 $ awk 'END {print NR}' /etc/passwd
 ```
-
-- Much simpler still: `wc -l /etc/passwd`
+    - Much simpler still: `wc -l /etc/passwd`
 
 
 # Loops in awk
@@ -212,45 +201,36 @@ $ awk -F: '{for (i=1; i<=NF; i=i+2) {print i, $i}; print " "}' /etc/passwd
 # Output in awk
 
 - Generic `print` just takes either strings or variables.
-
 ```bash
 $ awk -F: '{print "string", $2, $NF, NF, NR}' /etc/passwd
 ```
-
-- Alternatively, `printf` offers a wide range of C-style formatting capabilities, e.g.:
-
-  ```bash
+     - Alternatively, `printf` offers a wide range of C-style formatting capabilities, e.g.:
+```bash
   $ date | awk -F"[ :]" '{printf("Time=%2d hours and %2d minutes\n", $4, $5)}'
-  ```
-
-  - Remember not to forget to supply the newline `\n` in `printf`! The generic print already adds that for you automatically.
-- Formats are: `%d` for integer, `%f` for floats,`%e` for scientific, `%s` for string
-  - Length can be prescribed:
-
-  ```bash
+```
+   - Remember not to forget to supply the newline `\n` in `printf`! The generic print already adds that for you automatically.
+   - Formats are: `%d` for integer, `%f` for floats,`%e` for scientific, `%s` for string
+   - Length can be prescribed:
+```bash
   $ echo "1234.5678 910.16" | awk '{printf "%4.2f %1.3e \n", $1, $2}'
-  ```
+```
 
 
 # Variables in awk
 
 - Already mentioned the awk internal ones: `NR,NF,$1,$2,...`
 - User defined variables
-  - Convention: use lowercase to define their names.
+    - Convention: use lowercase to define their names.
 - Can be set inside script/command line:
-
-  ```bash
+```bash
   awk 'BEGIN{myvar="Hello !"; a=1; b=2; print myvar, a, "+", b "=", a+b}'
-  ```
-
-    - Question: Why is everything inside `BEGIN` section?
+```
+   - Question: Why is everything inside `BEGIN` section? 
 - Or can be passed to awk from outside:
-
 ```bash
 awk -F: -v n=1 '{print $n}' /etc/passwd
 ```
-
-(try same with `n=2,3,...`)
+   - (try same with `n=2,3,...`)
 
 
 # Variables in awk (cntd.)
