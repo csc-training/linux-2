@@ -154,5 +154,5 @@ $ alias grep='grep --color=auto -E'
 - Check for a valid format for Finnish social security number:
 
   ```bash
-  $ grep '[0-9]{6}[+-A][0-9]{3}[A-Z0-9]'
+  $ grep '[0-9]{6}[-+A][0-9]{3}[A-Z0-9]'
   ```
