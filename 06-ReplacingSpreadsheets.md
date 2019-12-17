@@ -24,8 +24,8 @@ paste [-d del -s] file1 file2 [file3 …]
 - Let's try the following:
 
 ```bash
-$ paste count.txt sheep.txt > counting_sheep_space.txt      # creates merged file with tabulators
-$ paste -d ' ' count.txt sheep.txt > counting_sheep_tab.txt # creates merged file with spaces
+$ paste count.txt sheep.txt > counting_sheep_tab.txt          # creates merged file with tabulators
+$ paste -d ' ' count.txt sheep.txt > counting_sheep_space.txt # creates merged file with spaces
 ```
 
 
