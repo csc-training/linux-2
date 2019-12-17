@@ -87,17 +87,17 @@ $ grep -r "global" /etc  >>output 2>&1
 - Unix has three special, so-called _pseudo device files_, which are commonly being used with redirections:
   - `/dev/null` discards all data written to it but reports that the write operation succeeded. Trying to read from it provides nothing.
 
-  ```bash
+```bash
   $ grep -r "global" /etc 2>/dev/null
-  ```
+```
 
   - `/dev/zero` provides an endless stream of zeros (bytes, not character).
   - `/dev/random` provides an endless stream of random bytes.
 
-  ```bash
+```bash
   $ cat /dev/random >gibberish.txt   # end with CTRL+C
   $ ls -l gibberish.txt
-  ```
+```
 
 
 # Redirecting input
