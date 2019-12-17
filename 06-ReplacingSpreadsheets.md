@@ -24,8 +24,8 @@ paste [-d del -s] file1 file2 [file3 …]
 - Let's try the following:
 
 ```bash
-$ paste count.txt sheep.txt > counting_sheep_tab.txt         # creates merged file with tabulators
-$ paste -d ' ' count.txt sheep.txt > counting_sheep_tab.txt  # creates merged file with space as delimiter
+$ paste count.txt sheep.txt > counting_sheep_space.txt      # creates merged file with tabulators
+$ paste -d ' ' count.txt sheep.txt > counting_sheep_tab.txt # creates merged file with spaces
 ```
 
 
@@ -134,11 +134,10 @@ $ sort -g sheep_lines.txt
 ```
 
 - Filters adjacent matching (redundant) files.
-  - `-c` prefix lines by number of their occurrence
-  - `-f N` avoid comparing the first *N* fields
-  - `-s N` avoid comparing the first *N* characters
-  - `-w N` compare not more than *N* characters/line
-
+    - `-c` prefix lines by number of their occurrence
+    - `-f N` avoid comparing the first *N* fields
+    - `-s N` avoid comparing the first *N* characters
+    - `-w N` compare not more than *N* characters/line
 - Skips the first column (the previously inserted numbers) and matches in max. 10 characters (i.e., avoiding the later columns) and prefixes the number of occurrence (hint: try with –f 2):
 
 ```bash
