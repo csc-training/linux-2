@@ -137,12 +137,13 @@ $ LANG=fi_FI.utf8 ls -ld ~/*
 - Brace expansion is a mechanism by which arbitrary strings may be generated. It is of form `[preamble]{str[,str,…]}[postscript]`.
 
 ```bash
-$ mkdir -p exp/{jan,feb,mar,apr}/run{1..3}-data
+$ mkdir -p exp/{jan,feb,mar,apr}/run{1..3}
 ```
+
 - Brace expansions may be nested.
 
 ```bash
-$ touch exp/{{jan,mar},feb/{1,2}}/skip
+$ touch exp/{{jan,mar},feb/run{1,2}}/skip
 ```
 
 
@@ -154,6 +155,7 @@ $ touch exp/{{jan,mar},feb/{1,2}}/skip
 $ echo ~
 $ echo ~root
 ```
+
 - Tilde expansion can also be used to refer to current working directory `$PWD`, or previous working directory `$OLDPWD`.
 
 ```bash
