@@ -23,9 +23,9 @@ _14:00 – 114:30 Coffee_<br/>
 
 09:00 – 10:00 Pattern matching and regular expressions<br/>
 _10:00 – 10:30 Coffee_<br/>
-10:30 – 11:30 Shell commands and utilities (replacing spreadsheets)<br/>
-_11:30 – 12:30 Lunch_<br/>
-12:30 – 13:30 awk (rendering spreadsheets ridiculous)<br/>
+10:30 – 11:15 Shell commands and utilities (replacing spreadsheets)<br/>
+_11:15 – 12:15 Lunch_<br/>
+12:15 – 13:30 awk (rendering spreadsheets ridiculous)<br/>
 13:30 – 14:30 Retrieving, compiling and running own programs<br/>
 _14:30 – 15:00 Coffee_<br/>
 15:00 – 16:30 Hands-on exercises
