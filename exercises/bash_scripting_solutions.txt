@@ -1,0 +1,143 @@
+Exercise 2.1
+
+#!/bin/bash
+
+x=40
+y=30
+
+echo "x=$x y=$y"
+
+
+
+
+Exercise 2.2.a
+
+#!/bin/bash
+
+for i in {1..20000}; do
+    echo "i=$i"
+done
+
+
+
+
+Exercise 2.2.b
+
+#!/bin/bash
+
+i=5
+while [ $i -le 10 ]; do
+    echo "i=$i"
+    i=$(( $i + 1 ))
+done
+
+
+
+
+Exercise 2.2.c
+
+#!/bin/bash
+
+i=20
+until [ $i -lt 15 ]; do
+    echo "i=$i"
+    i=$(( $i - 1 ))
+done
+
+
+
+
+Exercise 2.3.a
+
+#!/bin/bash
+
+echo "There are $(ls *.txt | wc -l) .txt files in this directory"
+
+
+
+
+Exercise 2.3.b
+
+#!/bin/bash
+
+if [ -e *.txt ]; then
+    echo "There are $(ls *.txt | wc -l) .txt files in this directory"
+else
+    echo "There are no .txt files in this directory"
+fi
+
+# alternate, an ultra compact solution:
+
+[ -e *.txt ] && echo "$(ls *.txt | wc -l) files" || echo "No files"
+
+
+
+
+Exercise 2.4.a
+
+#!/bin/bash
+
+echo "$3" "$2" "$1"
+
+
+
+
+Exercise 2.4.b
+
+#!/bin/bash
+
+for file in "$1" "$2" "$3"; do
+    if [ -e "$file" ]; then
+        echo "$file exists"
+    else   
+        echo "$file does not exist"
+    fi
+done
+
+# ultra compact solution, works for any number of parameters:
+
+for f in "$@"; do [ -e "$f" ] && echo "$f exists" || echo "$f does not exist"; done
+
+
+
+
+Exercise 2.5.a
+
+#!/bin/bash
+
+read -p "Give two numbers: " a b
+
+echo "Sum: $a + $b = $(( $a + $b)) Product: $a * $b = $(( $a * $b ))"
+
+
+
+
+Exercise 2.5.b
+
+#!/bin/bash
+
+read -p "Give two numbers between 1 and 10: " a b
+
+if [ $a -lt 1 -o $a -gt 10 ]; then
+        echo "$a was not in given range"
+        exit
+fi
+
+if [ $b -lt 1 -o $b -gt 10 ]; then
+        echo "$b was not in given range"
+        exit
+fi
+
+echo "Sum: $a + $b = $(( $a + $b)) Product: $a * $b = $(( $a * $b ))"
+
+# if-then-fi clauses above could also be written as:
+
+[ $a -lt 1 -o $a -gt 10 ] && { echo "$a was not in given range"; exit; }
+[ $b -lt 1 -o $b -gt 10 ] && { echo "$b was not in given range"; exit; }
+
+
+
+
+Exercise 2.6
+
+sum() { echo $(( $1 + $2 )); }

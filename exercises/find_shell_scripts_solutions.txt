@@ -1,0 +1,7 @@
+Exercise 1.1
+
+file /usr/bin/* | grep "shell script" | wc -l
+
+# or, using grep's counting option:
+
+file /usr/bin/* | grep -c "shell script"
